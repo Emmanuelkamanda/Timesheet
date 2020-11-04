@@ -44,7 +44,7 @@ public class EmployeServiceImpl implements IEmployeService {
 	@Override
 	public Employe addOrUpdateEmploye(Employe employe) {
 		
-		l.info("-----------------------" + "In  addOrUpdateEmploye : " + employe + "----------------------------------");
+		l.info(" In  addOrUpdateEmploye : " + employe );
 		employeRepository.save(employe);
 		
 		l.info("----------------------- Out of  addOrUpdateEmploye. ------------------------------------------");

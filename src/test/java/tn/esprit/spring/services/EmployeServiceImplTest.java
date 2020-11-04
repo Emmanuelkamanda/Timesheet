@@ -56,12 +56,12 @@ public class EmployeServiceImplTest {
 	
 	}
 	
-	@Test
-	public void testGetAllEmployes() {
-		List<Employe> employes = emp.getAllEmployes();
-		// if there are 5 users in DB : 
-		assertEquals(1, employes.size());
-	}
+//	@Test
+//	public void testGetAllEmployes() {
+//		List<Employe> employes = emp.getAllEmployes();
+//		// if there are 5 users in DB : 
+//		assertEquals(1, employes.size());
+//	}
 	
 
 }
