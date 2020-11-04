@@ -3,7 +3,8 @@ package tn.esprit.spring.services;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,8 @@ import tn.esprit.spring.repository.TimesheetRepository;
 
 @Service
 public class EmployeServiceImpl implements IEmployeService {
+	
+	private static final Logger l = LogManager.getLogger(EmployeServiceImpl.class);
 
 	@Autowired
 	EmployeRepository employeRepository;
@@ -30,6 +33,8 @@ public class EmployeServiceImpl implements IEmployeService {
 	ContratRepository contratRepoistory;
 	@Autowired
 	TimesheetRepository timesheetRepository;
+	
+
 
 	@Override
 	public Employe authenticate(String login, String password) {
@@ -37,10 +42,25 @@ public class EmployeServiceImpl implements IEmployeService {
 	}
 
 	@Override
-	public int addOrUpdateEmploye(Employe employe) {
+	public Employe addOrUpdateEmploye(Employe employe) {
+		
+		l.info("-----------------------" + "In  addOrUpdateEmploye : " + employe + "----------------------------------");
 		employeRepository.save(employe);
-		return employe.getId();
+		
+		l.info("----------------------- Out of  addOrUpdateEmploye. ------------------------------------------");
+		return employe;
 	}
+	
+	@Override
+	public Employe updateEmploye(Employe employe) {
+		
+		l.info("-----------------------" + "In  updateEmploye : " + employe + "----------------------------------");
+		employeRepository.save(employe);
+		
+		l.info("------------------------------ Out of  updateEmploye. ------------------------------------------");
+		return employe;
+	}
+	
 
 
 	public void mettreAjourEmailByEmployeId(String email, int employeId) {
@@ -159,7 +179,16 @@ public class EmployeServiceImpl implements IEmployeService {
 	}
 
 	public List<Employe> getAllEmployes() {
-		return (List<Employe>) employeRepository.findAll();
+		
+		l.info("-----------------------In  getAllEmployes ----------------------------------");
+		List<Employe> employes = (List<Employe>) employeRepository.findAll();
+		for (Employe e : employes) {
+			l.debug("employe +++ : " + e);
+		}		
+		l.info("-----------------------  getAllEmployes. ------------------------------------------");		
+		return employes;
+		
+		
 	}
 
 }
