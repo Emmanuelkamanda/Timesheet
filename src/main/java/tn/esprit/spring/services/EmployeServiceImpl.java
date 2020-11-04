@@ -105,9 +105,13 @@ public class EmployeServiceImpl implements IEmployeService {
 	
 	// Tablesapce (espace disque) 
 
-	public int ajouterContrat(Contrat contrat) {
+	public Contrat ajouterContrat(Contrat contrat) {
+		
+		l.info("-----------------------" + "In  ajouterContrat : " + contrat + "----------------------------------");
 		contratRepoistory.save(contrat);
-		return contrat.getReference();
+		
+		l.info("----------------------- Out of  ajouterContrat. ------------------------------------------");
+		return contrat;
 	}
 
 	public void affecterContratAEmploye(int contratId, int employeId) {

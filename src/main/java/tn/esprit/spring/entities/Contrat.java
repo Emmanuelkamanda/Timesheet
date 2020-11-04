@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Pattern;
+
 
 @Entity
 public class Contrat implements Serializable {
@@ -27,63 +27,117 @@ public class Contrat implements Serializable {
 	private String typeContrat;
 	
 	
-	private float telephone;
+	private int telephone;
 	
 	@OneToOne
 	private Employe employe;
 
-	private float salaire;
+	private int salaire;
 
 	public Contrat() {
 		super();
 	}
 	
-	public Contrat(Date dateDebut, String typeContrat, float salaire) {
+	
+	
+	public Contrat(int reference, Date dateDebut, String typeContrat, int telephone, int salaire) {
+		super();
+		this.reference = reference;
+		this.dateDebut = dateDebut;
+		this.typeContrat = typeContrat;
+		this.telephone = telephone;
+		this.salaire = salaire;
+	}
+
+
+
+	public Contrat(Date dateDebut, String typeContrat, int salaire) {
 		this.dateDebut = dateDebut;
 		this.typeContrat = typeContrat;
 		this.salaire = salaire;
 	}
+
+
+
+	public int getReference() {
+		return reference;
+	}
+
+
+
+	public void setReference(int reference) {
+		this.reference = reference;
+	}
+
 
 
 	public Date getDateDebut() {
 		return dateDebut;
 	}
 
+
+
 	public void setDateDebut(Date dateDebut) {
 		this.dateDebut = dateDebut;
 	}
 
-	public int getReference() {
-		return reference;
-	}
 
-	public void setReference(int reference) {
-		this.reference = reference;
-	}
 
 	public String getTypeContrat() {
 		return typeContrat;
 	}
 
+
+
 	public void setTypeContrat(String typeContrat) {
 		this.typeContrat = typeContrat;
 	}
 
-	public float getSalaire() {
-		return salaire;
+
+
+	public int getTelephone() {
+		return telephone;
 	}
 
-	public void setSalaire(float salaire) {
-		this.salaire = salaire;
+
+
+	public void setTelephone(int telephone) {
+		this.telephone = telephone;
 	}
+
+
 
 	public Employe getEmploye() {
 		return employe;
 	}
 
+
+
 	public void setEmploye(Employe employe) {
 		this.employe = employe;
 	}
+
+
+
+	public int getSalaire() {
+		return salaire;
+	}
+
+
+
+	public void setSalaire(int salaire) {
+		this.salaire = salaire;
+	}
+
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+	
+
 	
 	
 }
